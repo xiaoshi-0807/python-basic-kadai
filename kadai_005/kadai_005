@@ -1,1 +1,32 @@
 kadai_005
+
+Step1. ローカルリポジトリ「git_challenge」を作成する
+(base) git_challenge % mkdir git_challenge
+(base) git_challenge % cd git_challenge
+(base) git_challenge % git init
+
+Initialized empty Git repository in /Users/git_challenge/.git/
+
+
+Step2. テキストファイル「hello_world.txt」を作成する
+(base) git_challenge % git add /Users/git_challenge/hello_world
+(base) git_challenge %
+
+
+
+Step3. 「hello_world.txt」に2回の変更をコミットする
+(base) git_challenge % git commit -m "初回目の変更"
+
+[main (root-commit) 39a10d5] 初回目の変更
+ 1 file changed, 2 insertions(+)
+ create mode 100644 hello_world
+(base) ptmind@MacBook-Air git_challenge % git commit -m "２回目の変更"
+
+[main 5815fea] ２回目の変更
+ 1 file changed, 1 insertion(+)
+
+
+Step4. 「hello_world.txt」の変更履歴を表示する
+(base)  git_challenge % git log --oneline
+5815fea (HEAD -> main) ２回目の変更
+39a10d5 初回目の変更
