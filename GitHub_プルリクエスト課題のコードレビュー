@@ -1,0 +1,119 @@
+
+#カレントディレクトリをChange
+(base) @MacBook-Air ~ % cd git_challenge
+
+#ローカルリポジトリとリモートリポジトリと連携する
+(base) @MacBook-Air git_challenge % git remote add origin git@github.com:xiaoshi-0807/git_challenge.git
+error: remote origin already exists.
+(base) @MacBook-Air git_challenge % git remote -v
+origin  git@github.com:xiaoshi-0807/github-basic-kadai.git (fetch)
+origin  git@github.com:xiaoshi-0807/github-basic-kadai.git (push)
+
+
+＃originという名前のリモートリポジトリが存在しているため、名前を変更する
+(base) @MacBook-Air git_challenge % git remote rename origin origin_basic_kada
+i
+Renaming remote references: 100% (1/1), done.
+(base) @MacBook-Air git_challenge % git remote -v
+origin_basic_kadai      git@github.com:xiaoshi-0807/github-basic-kadai.git (fetch)
+origin_basic_kadai      git@github.com:xiaoshi-0807/github-basic-kadai.git (push)
+(base) @MacBook-Air git_challenge % git remote add origin git@github.com:xiaoshi-0807/git_challenge.git
+(base) @MacBook-Air git_challenge % git remote -v
+origin  git@github.com:xiaoshi-0807/git_challenge.git (fetch)
+origin  git@github.com:xiaoshi-0807/git_challenge.git (push)
+origin_basic_kadai      git@github.com:xiaoshi-0807/github-basic-kadai.git (fetch)
+origin_basic_kadai      git@github.com:xiaoshi-0807/github-basic-kadai.git (push)
+
+
+#ローカルリポジトリ「git_challenge」の変更履歴をリモートリポジトリ「git_challenge」へpush
+(base) @MacBook-Air git_challenge % git push -u origin main
+Enter passphrase for key '/Users/.ssh/id_rsa': 
+Enumerating objects: 34, done.
+Counting objects: 100% (34/34), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (28/28), done.
+Writing objects: 100% (34/34), 67.63 KiB | 13.53 MiB/s, done.
+Total 34 (delta 8), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (8/8), done.
+To github.com:xiaoshi-0807/git_challenge.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+
+#ローカルのmainブランチを最新の状態にする
+(base) MacBook-Air git_challenge % git checkout main
+M       .DS_Store
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+(base) MacBook-Air git_challenge % git pull
+Enter passphrase for key '/Users/.ssh/id_rsa': 
+Already up to date.
+
+
+#プルリクエスト用のローカルブランチを作成し、切り替える
+(base) MacBook-Air git_challenge % git checkout -b pull_request
+Switched to a new branch 'pull_request'
+
+
+#ファイルに変更を加えた後、インデックスに追加し、そしてローカルリポジトリにcommit
+(base) MacBook-Air git_challenge % git add .   
+(base) MacBook-Air git_challenge % git commit -m "hello_worldのファイルに変更
+を加えた"
+[pull_request 97a81c6] hello_worldのファイルに変更を加えた
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+#インデックスとローカルリポジトリの変更差分を確認する
+ (base) MacBook-Air git_challenge % git diff --staged
+
+
+#差分がなさそうなので、リモートリポジトリにpush
+(base) MacBook-Air git_challenge % git push
+Enter passphrase for key '/Users/.ssh/id_rsa': 
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 546 bytes | 546.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'pull_request' on GitHub by visiting:
+remote:      https://github.com/xiaoshi-0807/git_challenge/pull/new/pull_request
+remote: 
+To github.com:xiaoshi-0807/git_challenge.git
+ * [new branch]      pull_request -> pull_request
+branch 'pull_request' set up to track 'origin/pull_request'.
+
+
+#Github上の操作が完了後、ローカルのmainブランチに切り替える
+(base) ptmind@MacBook-Air git_challenge % git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+#ローカルにあるプルリクエストブランチのpull_requestを削除する
+(base) ptmind@MacBook-Air git_challenge % git branch -D pull_request
+Deleted branch pull_request (was 97a81c6).
+
+#mainブランチを最新の状態にする
+(base) ptmind@MacBook-Air git_challenge % git pull
+Enter passphrase for key '/Users/ptmind/.ssh/id_rsa': 
+remote: Enumerating objects: 1, done.
+remote: Counting objects: 100% (1/1), done.
+remote: Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (1/1), 965 bytes | 965.00 KiB/s, done.
+From github.com:xiaoshi-0807/git_challenge
+   0fc1bad..0ba15dc  main       -> origin/main
+Updating 0fc1bad..0ba15dc
+Fast-forward
+ .DS_Store   | Bin 6148 -> 6148 bytes
+ hello_world |   2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+
+提出した課題のリンク
+https://github.com/xiaoshi-0807/git_challenge/pull/1
+
+
+
+
+
