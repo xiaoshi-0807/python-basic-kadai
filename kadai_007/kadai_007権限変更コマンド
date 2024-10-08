@@ -1,0 +1,35 @@
+
+#カレントディレクトリにkadai_007ディレクトリを作成
+(base)@MacBook-Air ~ % mkdir kadai_007
+
+
+#kadai_007ディレクトリにkadai_007.txtを作成
+(base)@MacBook-Air ~ % touch kadai_007/kadai_007.txt
+
+
+#kadai_007の権限確認
+(base)@MacBook-Air ~ % ls -l
+total 5048
+drwxr-xr-x@   3  staff       96 10  8 22:19 kadai_007
+
+
+#kadai_007.txtのすべてのユーザーの権限を、読み取り専用に変更
+(base) @MacBook-Air ~ % chmod 444 kadai_007
+
+#権限確認
+(base) @MacBook-Air ~ % ls -l
+dr--r--r--@   3  staff       96 10  8 22:19 kadai_007
+
+#kadai_007.txtのすべてのユーザーの権限を、書き込み可能に変更
+(base) @MacBook-Air ~ % chmod 222 kadai_007
+
+#権限確認
+(base) @MacBook-Air ~ % ls -l
+d-w--w--w-    3  staff       96 10  8 22:19 kadai_007
+
+#kadai_007.txtのすべてのユーザーの権限を、読み取りかつ書き込み可能に変更
+(base) @MacBook-Air ~ % chmod 666 kadai_007
+
+#権限確認
+(base) @MacBook-Air ~ % ls -l
+drw-rw-rw-@   3  staff       96 10  8 22:19 kadai_007
